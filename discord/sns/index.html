@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="color-scheme" content="light">
+<title>SNS投稿のつくり方</title>
+<style>
+:root{--bg:#f4f7fc;--card:#fff;--ink:#17233d;--sub:#566380;--line:#dde4f2;--brand:#2f6df0;--brand-d:#2456c8;--ok:#16a34a;--r:16px}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;font-size:17px;line-height:1.75;-webkit-text-size-adjust:100%}
+.wrap{max-width:860px;margin:0 auto;padding:0 16px 80px}
+header.top{background:linear-gradient(135deg,#e1306c,#f77737);color:#fff;padding:28px 0 58px}
+header.top .wrap{padding-bottom:0;position:relative}
+.bigbtn{display:block;margin:12px 0 0;min-height:44px;padding:0 16px;border-radius:99px;border:2px solid #fff;background:rgba(255,255,255,.15);color:#fff;font-weight:800;font-size:15px;cursor:pointer}body.big{font-size:21px}body.big .small{font-size:16px}body.big .copybox pre{font-size:19px}
+header.top .eyebrow{font-size:13px;letter-spacing:.12em;opacity:.9}
+header.top h1{margin:4px 0 6px;font-size:28px}
+header.top p{margin:0;opacity:.95;font-size:15px}
+main{margin-top:-34px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px;box-shadow:0 2px 10px rgba(30,50,100,.06)}
+.stack>*+*{margin-top:18px}
+h2{font-size:21px;margin:0 0 10px}
+.small{font-size:14px;color:var(--sub)}
+.flowbar{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:6px}
+.flowbar div{background:#fff3ea;border:1px solid #ffd9bf;border-radius:12px;padding:10px 12px;font-weight:700;font-size:15px;text-align:center}
+@media(max-width:600px){.flowbar{grid-template-columns:1fr}}
+table.items{border-collapse:collapse;width:100%;margin-top:6px}table.items td{border:1px solid var(--line);padding:8px 10px;vertical-align:top;font-size:15.5px}table.items td:first-child{background:#f5f8ff;font-weight:700;width:34%}
+.warn{background:#fff7de;border-left:6px solid #f0b429;border-radius:10px;padding:10px 14px;font-size:15.5px;margin-top:12px}
+.okbox{background:#eaf8ef;border-left:6px solid var(--ok);border-radius:10px;padding:8px 14px;font-size:15.5px;margin-top:10px}
+.okbox b{color:#116b35}
+nav.tabs{position:sticky;top:0;z-index:5;background:rgba(244,247,252,.95);backdrop-filter:blur(6px);padding:10px 16px;margin:0 -16px;display:flex;gap:8px;overflow-x:auto;border-bottom:1px solid var(--line)}
+nav.tabs a{flex:none;min-height:44px;display:inline-flex;align-items:center;padding:4px 16px;border-radius:99px;background:#fff;border:1px solid var(--line);color:var(--ink);text-decoration:none;font-size:15.5px;font-weight:700}
+nav.tabs a.on{background:var(--brand);border-color:var(--brand);color:#fff}
+.bar{height:10px;background:#e3e9f6;border-radius:99px;overflow:hidden}.bar>i{display:block;height:100%;width:0;background:var(--ok);transition:width .3s}
+.step{border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-top:14px;background:#fff}
+.step.done{background:#f1faf4;border-color:#b6e4c6}
+.step header{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.num{flex:none;width:38px;height:38px;border-radius:50%;background:var(--brand);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center}
+.step.done .num{background:var(--ok)}
+.step h3{margin:0;font-size:18px;flex:1 1 200px}
+label.ok{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 6px;font-size:15px;font-weight:700;cursor:pointer;color:var(--sub)}
+label.ok input{width:24px;height:24px;accent-color:var(--ok)}
+.body{margin:6px 0 0 50px}@media(max-width:560px){.body{margin-left:0}}
+.body p{margin:6px 0}
+.shot{display:block;max-width:100%;height:auto;border:1px solid var(--line);border-radius:10px;margin:8px 0;cursor:zoom-in}
+.shotf{margin:10px 0}.shotf figcaption{font-size:15px;font-weight:700;margin-top:4px}.shotf .shot{margin:0}
+.cap{font-size:13.5px;color:var(--sub);margin:-2px 0 6px}
+.copybox{border:1.5px solid #cfd9f2;border-radius:12px;background:#f7f9ff;margin:10px 0;overflow:hidden}
+.copybox .hd{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#eaf0ff;padding:6px 10px 6px 14px;font-weight:700;font-size:14.5px;color:var(--brand-d)}
+.copybox pre{margin:0;padding:12px 14px;white-space:pre-wrap;word-break:break-word;font-family:inherit;font-size:16px;line-height:1.7}
+.copybox pre mark{background:#ffe98a;border-radius:4px;padding:0 3px}
+.copy{flex:none;min-height:40px;padding:0 16px;border-radius:10px;border:1.5px solid var(--brand);background:#fff;color:var(--brand-d);font-weight:800;font-size:14.5px;cursor:pointer}
+.copy.ok{background:var(--ok);border-color:var(--ok);color:#fff}
+.dls{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin:10px 0}
+a.dl{display:flex;align-items:center;gap:12px;border:2px solid var(--brand);border-radius:14px;padding:10px;text-decoration:none;color:var(--ink);background:#f7faff;min-height:64px}
+a.dl img{width:64px;height:64px;object-fit:cover;border-radius:8px;border:1px solid var(--line);background:#fff}
+a.dl:hover{background:#eaf2ff}
+details.more{border:1px solid var(--line);border-radius:12px;padding:2px 14px;margin:8px 0;background:#fafbff}
+details.more summary{min-height:44px;display:flex;align-items:center;font-weight:800;cursor:pointer}
+details.more ol{margin:4px 0 10px;padding-left:22px}details.more li{margin:6px 0}
+.chk{display:flex;align-items:flex-start;gap:10px;min-height:44px;margin:6px 0;font-size:16.5px}
+.chk input{width:24px;height:24px;margin-top:4px;accent-color:var(--ok)}
+table.help{border-collapse:collapse;width:100%}table.help td{border:1px solid var(--line);padding:10px 12px;vertical-align:top}table.help td:first-child{background:#fff7de;font-weight:700;width:42%}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px;border-radius:12px;background:var(--brand);color:#fff;font-weight:800;text-decoration:none}
+#lb{position:fixed;inset:0;background:rgba(15,23,42,.88);display:none;align-items:center;justify-content:center;z-index:20;padding:16px;cursor:zoom-out}#lb.on{display:flex}#lb img{max-width:100%;max-height:100%;border-radius:10px;background:#fff}
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,40px);background:#17233d;color:#fff;padding:10px 20px;border-radius:99px;font-size:15px;opacity:0;transition:.25s;pointer-events:none;z-index:30}.toast.on{opacity:1;transform:translate(-50%,0)}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid #ffb000;outline-offset:2px}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+@media print{header.top,nav.tabs,.toast,.copy{display:none}body{background:#fff}.card,.step{box-shadow:none;break-inside:avoid}}
+.navrow{display:flex;gap:10px;margin-top:16px}.navrow .btn{flex:1;border:0;font-size:17px;cursor:pointer}.btn.alt{background:#fff;color:var(--brand-d);border:2px solid var(--brand);cursor:pointer}.btn[disabled]{opacity:.4}.linkbtn{background:none;border:0;color:var(--brand-d);text-decoration:underline;font-size:15px;min-height:44px;cursor:pointer}
+</style>
+<style>.work-unit{background:#eaf1ff;border-left:5px solid #2f6df0;padding:12px 16px;border-radius:12px}.work-unit h2{font-size:19px;margin:2px 0}.work-unit p{margin:3px 0}.now-label{flex-basis:100%;font-weight:800;color:#2456c8}.unit-end{padding:12px;background:#fff7de;border-radius:8px;font-size:15px}.step{scroll-margin-top:90px}.progress-detail{font-size:14px}.progress-detail summary{font-size:14px}.step header .num{width:auto;min-width:38px;padding:0 8px}</style></head>
+<body>
+<header class="top"><div class="wrap"><div class="eyebrow">ESPICT SCHOOL</div><h1>SNS投稿のつくり方</h1><p>シートから情報を選ぶ → ChatGPTで投稿文と画像を作る → Instagramに投稿する</p><button id="big" class="bigbtn" type="button" aria-pressed="false">文字を大きく</button></div></header>
+<section class="card" style="margin:16px auto;max-width:828px"><b>確認用教材（公開中・未完成）</b><p id="sns-source-policy">今回のSNS投稿は、各事業所で集めた情報から各自が1件選びます。全員共通の固有シートURLや、同じ行の一律指定は必要ありません。 各事業所で集めた情報から、各自が使うシートと行を確認して1件選びます。自分で作ったシートなら確認済みの行、共有シートなら「採用候補」の行を使います。「提出情報（確認待ち）」は使いません。候補がない・使うシートや行が分からない時は、いつものDiscordの質問先で確認します。 情報内容・公式元URL・事実確認・必要な職員確認は省略しません。共通URL未指定だけで全制作を止めません。</p><p>画面が違ったら、まず指示書のタブと今のカード番号を確かめます。別のタブが開いていたら、この指示書のタブ名を1回押します。同じ画面で進めなければ、Discordの自分の事業所で前に質問を書いたチャンネルまたはスレッドへ「カード番号・押したもの・出た表示」を送ります。パスワードやログイン用の確認コードは送りません。</p><p>質問先は、Discordのエスピクトサーバーで自分の事業所を開き、前に自分が質問し、返事を受け取ったチャンネルかスレッドを選びます。複数あれば今回の教材について話した場所を選びます。提出先は、前に自分が同じ種類の成果物を送った場所を選びます。初回で場所が分からない時は、知っている事業所の連絡先か、そばの職員さんへ「ブログ・SNS・画像のうち今進めている教材名と、質問先／提出先を知りたいこと」を伝えます。別の事業所へは送りません。</p><details class="more"><summary>作業で困った時に読む：まだ試していないこと</summary><p>動画は別担当で制作・確認中です。今回の対象はSNS1本と画像の初級・中級・上級3本で、制作部分は共通、提出場面のみ版別です。この候補に完成動画は同梱していません。STUDIO・Canva・Instagramなどの今のボタン名や、自分のアカウントでの操作は、まだすべてを試していません。原本の名称と違う画面では推測で押さず、Discordの自分の事業所で前に質問を書いたチャンネルまたはスレッドへ表示名を伝えます。実受講者による完走確認済みではありません。 提出先は3教材ともDiscordの自分の事業所で前に成果物を送った提出先です。提出物・案件記号を確認し、投稿後に本文と添付を開いて確かめます。送信と運営の検収は別です。</p></details></section><main class="wrap">
+<section class="card" id="overview"></section>
+<nav class="tabs" id="tabs" aria-label="手順の切り替え"></nav>
+<div id="view" class="stack" style="margin-top:16px"></div>
+</main>
+<div id="lb" role="dialog" aria-label="画像の拡大"><img alt=""></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="data.js"></script>
+<script>
+const $=(s,r=document)=>r.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+let store={};try{store=JSON.parse(localStorage.getItem((STAFF_MODE?'school-candidate-sns-staff-20261031':('school-dual-sns:'+location.pathname)))||'{}')}catch(e){}
+const save=()=>{try{localStorage.setItem((STAFF_MODE?'school-candidate-sns-staff-20261031':('school-dual-sns:'+location.pathname)),JSON.stringify(store))}catch(e){}};
+const toast=m=>{const t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(toast.h);toast.h=setTimeout(()=>t.classList.remove('on'),1400)};
+const copyText=async t=>{try{await navigator.clipboard.writeText(t);return true}catch(e){try{const a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();const ok=document.execCommand('copy');a.remove();return ok}catch(e2){return false}}};
+const hl=t=>esc(t).replace(/(［[^］]*］)/g,'<mark>$1</mark>');
+const copybox=c=>`<div class="copybox"><div class="hd"><span>${esc(c.label)}</span><button class="copy" data-copy="${esc(c.text)}">コピー</button></div><pre>${hl(c.text)}</pre></div>`;
+function staffOverview(){
+ const o=OVERVIEW;
+ $('#overview').innerHTML=`<h2>職員さん用：開始前の準備</h2><p><a href="index.html">利用者の投稿作業へ戻る</a></p>
+ <p style="margin:0 0 6px"><b>目的：</b>${esc(o.purpose)}</p>
+ <p style="margin:0 0 10px"><b>時間：</b>${esc(o.time)}</p>
+ <div class="flowbar"><div>① 最初に1回だけ<br><span class="small">アカウント（職員さんと）→固定3投稿</span></div><div>② 1投稿ごと<br><span class="small">1操作ずつのカード</span></div><div>③ 提出<br><span class="small">投稿のリンク</span></div></div>
+ <h2 style="margin-top:16px;font-size:18px">職員さんに聞いて、決めておくもの</h2><ul style="margin:4px 0 0;padding-left:22px">${ASK_STAFF.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>
+ <p style="margin:14px 0 0;text-align:center"><a class="btn" href="#/first">はじめる →</a></p>
+ <details class="more" style="margin-top:14px"><summary>はじめる前に読む（準備するもの・納品先・用語）</summary>
+ <h2 style="margin-top:18px;font-size:18px">準備するもの</h2>
+ <table class="items">${o.items.map(i=>`<tr><td>${esc(i[0])}</td><td>${esc(i[1])}</td></tr>`).join('')}</table>
+ <div class="warn">⚠️ ${esc(o.warn)}</div>
+ <h2 style="margin-top:18px;font-size:18px">使うサービスの入口</h2><div class="dls">${LINKS_IN.map(l=>`<a class="dl" href="${l[1]}" target="_blank" rel="noopener"><span><b>${esc(l[0])}</b><br><span class="small">${l[1].replace('https://','')}</span></span></a>`).join('')}</div>
+
+ <details class="more" style="margin-top:14px"><summary>ことばの説明</summary><table class="items">${GLOSS.map(g=>`<tr><td>${esc(g[0])}</td><td>${esc(g[1])}</td></tr>`).join('')}</table></details>
+ <p class="small" style="margin:12px 0 0">${esc(o.stepnote)}</p>
+ <p style="margin:10px 0 0"><a class="btn" href="${o.cardpdf}" target="_blank" rel="noopener">やることカード（元資料・現在の本文を優先）を開く</a></p>
+ <p class="small" style="margin:8px 0 0">📷 ${esc(IMGNOTE)}</p>
+ <p class="small" style="margin:8px 0 0">🖥 パソコンとスマホ：ChatGPT・Canvaは、どちらでもできます。Instagramの投稿は、スマホで行います（公開前の項目を自分で確認します）。</p>
+ <h2 style="margin-top:18px;font-size:18px">納品先と、提出のきまり</h2>
+ <p style="margin:0 0 6px"><b>納品先：</b>${esc(o.submit.to)}</p>
+ <p style="margin:0 0 6px"><b>提出するもの：</b>${esc(o.submit.what)}</p>
+ ${copybox({label:'提出の書き方（5つ）',text:o.submit.text})}
+ <p class="small" style="margin:0">${esc(o.submit.note)}</p>
+ <p class="small" style="margin:10px 0 0">${esc(o.relation)}</p></details>`;
+}function overview(){
+ if(STAFF_MODE){staffOverview();return;}
+ $('#overview').innerHTML=`<h2>SNS投稿の作成</h2><p>最後に、公開した投稿のリンクをDiscordの自分の事業所で前に成果物を送った提出先へ出します。初回は1投稿が一区切りです。全体の件数・期限は変えません。</p><figure class="shotf"><img class="shot" src="img/finish.png" alt="既存の仕上がりの説明用イメージ"><figcaption>既存の仕上がり見本（説明用イメージ・合成を含みます。実投稿の証拠ではありません）</figcaption></figure><a class="btn" href="#/each">1投稿を作る</a><p>ログイン画面では利用を認められたアカウントを使います。ログインできない時は、アカウントを管理する人へ相談します。パスワードやログイン用の確認コードは送りません。</p><p>ログインで困ったときは、アカウントを管理する人に画面の状態だけ伝えます。秘密は送りません。</p><details class="more"><summary>件数・準備済みの条件・用語・提出のきまり</summary><p>${esc(OVERVIEW.purpose)}</p><p>${esc(OVERVIEW.time)}</p><p>${esc(OVERVIEW.stepnote)}</p><p>${esc(OVERVIEW.relation)}</p><table class="items">${OVERVIEW.items.map(r=>`<tr>${r.map(x=>`<td>${esc(x)}</td>`).join('')}</tr>`).join('')}</table><p>${esc(OVERVIEW.warn)}</p><p>${esc(IMGNOTE)} 合成画像は説明用イメージであり、実操作の証明ではありません。</p><table class="items">${GLOSS.map(r=>`<tr>${r.map(x=>`<td>${esc(x)}</td>`).join('')}</tr>`).join('')}</table><h3>提出のきまり</h3><p>${esc(OVERVIEW.submit.to)}</p><p>${esc(OVERVIEW.submit.what)}</p>${copybox({label:'提出の書き方（5つ）',text:OVERVIEW.submit.text})}<p>${esc(OVERVIEW.submit.note)}</p><a class="btn" href="${OVERVIEW.cardpdf}">やることカード（元資料・現在の本文を優先）</a></details>`;
+}
+
+const key=(p,i)=>`${p}.${i}`;
+const prog=p=>{const ph=PHASES.find(x=>x.key===p);let d=0;ph.steps.forEach((_,i)=>{if(store[key(p,i)])d++});return[d,ph.steps.length]};
+function stepHTML(p,s,i){
+ const k=key(p,i),d=!!store[k];
+ const imgs=[s.img,...(s.imgs||[])].filter(Boolean);
+ return`<section class="step${d?' done':''}" id="st-${p}-${i}"><header><span class="num">${d?'✓':i+1}</span><h3>${esc(s.t)}</h3><label class="ok"><input type="checkbox" data-k="${k}" ${d?'checked':''}>できた</label></header><div class="body">
+ ${s.source?`<details class="more"><summary>元の説明・条件（参照用）</summary>${(s.source.p||[]).map(x=>`<p>${esc(x)}</p>`).join('')}${s.source.warn?`<p>${esc(s.source.warn)}</p>`:''}</details>`:''}
+ ${(s.p||[]).map(x=>`<p>${esc(x)}</p>`).join('')}
+ ${s.dl?`<div class="dls">${s.dl.map(k=>{const d=DL[k];return`<a class="dl" href="files/${d.file}" download="${d.file}"><img src="files/${d.img}" alt="" loading="lazy"><span><b>${esc(d.label)}</b><br><span class="small">押すと、保存されます</span></span></a>`}).join('')}</div>`:''}
+ ${s.copy?(Array.isArray(s.copy)?s.copy:[s.copy]).map(copybox).join(''):''}
+ ${s.shots?s.shots.map(x=>`<figure class="shotf"><img class="shot" src="img/${x[0]}" alt="${esc(x[1])}" loading="lazy"><figcaption>${esc(x[1])}（説明用イメージ・合成を含む。実画面との一致は未検証）</figcaption></figure>`).join(''):''}
+ ${s.link?`<p><a class="btn" href="${s.link.href}" target="_blank" rel="noopener">${esc(s.link.label)}</a></p>`:''}
+ ${s.order?orderTable():''}
+ ${imgs.map(m=>`<img class="shot" src="img/${m}" alt="${esc(s.t)}の説明用イメージ（合成を含む・実画面未照合）" loading="lazy">`).join('')}
+ ${s.imgcap?`<div class="cap">${esc(s.imgcap)}（説明用イメージ・合成を含む）</div>`:''}
+ ${s.checks?s.checks.map((c,n)=>`<label class="chk"><input type="checkbox" data-k="${k}.c${n}" ${store[k+'.c'+n]?'checked':''}><span>${esc(c)}</span></label>`).join(''):''}
+ ${s.details?s.details.map(d=>`<details class="more"${s.open?' open':''}><summary>${esc(d.title)}</summary><ol>${d.steps.map(x=>`<li>${esc(x)}</li>`).join('')}</ol></details>`).join(''):''}
+ ${s.warn?`<div class="warn">⚠️ <b>注意</b>　${esc(s.warn)}</div>`:''}
+ ${s.ok?`<div class="okbox"><b>✅ こうなればOK</b>　${esc(s.ok)}</div>`:''}
+ </div></section>`}
+const orderTable=()=>`<table class="items" style="margin:10px 0"><tr>${ORDER.head.map(x=>`<td style="background:#eaf0ff;font-weight:800">${esc(x)}</td>`).join('')}</tr>${ORDER.rows.map(r=>`<tr>${r.map((x,i)=>`<td style="${i==0?'font-weight:800;background:#f5f8ff':''}">${esc(x)}</td>`).join('')}</tr>`).join('')}</table><div class="warn" style="margin-top:0">${esc(ORDER.note)}</div>`;
+
+let showAll=false;
+function stepsView(ph){
+ const n=ph.steps.length;let c=+(store['cur.'+ph.key]||0);
+ if(c<0||c>=n)c=0;
+ if(showAll)return`<p style="text-align:center;margin:0"><button class="btn alt" id="toone" type="button">1つずつ表示にもどす</button></p>`+ph.steps.map((s,i)=>stepHTML(ph.key,s,i)).join('');
+ return`<div class="small" style="text-align:center">${c+1} / ${n} 番目</div>`+stepHTML(ph.key,ph.steps[c],c)+`<div class="navrow"><button class="btn alt" id="prev" type="button" ${c===0?'disabled':''}>← 前のカードを見る</button><button class="btn" id="next" type="button">${c===n-1?(ph.key==='acct'?'ぜんぶ終わり → 次は「最初に1回だけ」へ':ph.key==='first'?'ぜんぶ終わり → 次は「1投稿ごと」へ':'ぜんぶ終わり'):'できた → 次へ'}</button></div><p style="text-align:center;margin:8px 0 0"><button class="linkbtn" id="toall" type="button">ぜんぶの手順を一覧で見る</button></p>`}
+function bindNav(ph){
+ const n=ph.steps.length;const go=d=>{let c=+(store['cur.'+ph.key]||0)+d;c=Math.max(0,Math.min(n-1,c));store['cur.'+ph.key]=c;save();view();focusCurrent()};
+ const nx=$('#next');if(nx)nx.addEventListener('click',()=>{const c=+(store['cur.'+ph.key]||0);store[key(ph.key,c)]=1;save();if(c>=n-1){store.finished=store.finished||{};store.finished[ph.key]=true;save();toast('手順の確認を記録しました。保存したファイルとDiscordの自分の送信内容を開いて確かめます');if(ph.key==='acct'){location.href='index.html#/first';return;}location.hash=ph.key==='acct'?'#/first':ph.key==='first'?'#/each':'#/help';return}go(1)});
+ const pv=$('#prev');if(pv)pv.addEventListener('click',()=>go(-1));
+ const ta=$('#toall');if(ta)ta.addEventListener('click',()=>{showAll=true;view()});
+ const to=$('#toone');if(to)to.addEventListener('click',()=>{showAll=false;view()});
+}
+function view(){
+ const h=location.hash.replace(/^#\/?/,'')||(STAFF_MODE?'acct':'each');
+ const tabs=[...PHASES.map(p=>({k:p.key,l:p.label})),{k:'help',l:'困ったとき'}];
+ $('#tabs').innerHTML=tabs.map(t=>`<a href="#/${t.k}" class="${t.k===h?'on':''}">${t.l}</a>`).join('');
+ const v=$('#view');
+ if(h==='help'){v.innerHTML=`<section class="card"><h2>困ったとき</h2><table class="help">${HELP.map(r=>`<tr><td>${esc(r[0])}</td><td>${esc(r[1])}</td></tr>`).join('')}</table></section>`;return}
+ const ph=PHASES.find(p=>p.key===h)||PHASES.find(p=>p.key===(STAFF_MODE?'acct':'each'))||PHASES[0];const[d,t]=prog(ph.key);
+ v.innerHTML=`<section class="card"><h2 style="margin-bottom:4px">${esc(ph.title)}</h2><div class="warn" style="margin-top:8px">${esc(ph.note)}</div><div style="margin-top:12px"><div class="bar"><i id="bar" style="width:${d/t*100}%"></i></div><div class="small" id="barlab" style="margin-top:6px">${d} / ${t} ステップ</div></div></section>`+stepsView(ph)+(ph.key==='acct'?`<p style="text-align:center;margin:20px 0 0"><a class="btn" href="index.html#/first">次へ：最初に1回だけ（固定3投稿）→</a></p>`:ph.key==='first'?`<p style="text-align:center;margin:20px 0 0"><a class="btn" href="#/each">次へ：1投稿ごとの作業 →</a></p>`:`<p style="text-align:center;margin:20px 0 0"><a class="btn" href="#/help">困ったとき →</a></p>`);
+ bindNav(ph);
+ v.querySelectorAll('input[data-k]').forEach(el=>el.addEventListener('change',()=>{store[el.dataset.k]=el.checked?1:0;save();if(!el.dataset.k.includes('.c')){const sec=el.closest('.step');sec.classList.toggle('done',el.checked);$('.num',sec).textContent=el.checked?'✓':(+sec.id.split('-').pop()+1);const[d2,t2]=prog(ph.key);$('#bar').style.width=(d2/t2*100)+'%';$('#barlab').textContent=`${d2} / ${t2} ステップ`}}));
+}
+document.addEventListener('click',async e=>{
+ const si=e.target.closest('img.shot');if(si){const lb=$('#lb');$('img',lb).src=si.src;lb.classList.add('on');return}
+ if(e.target.closest('#lb')){$('#lb').classList.remove('on');return}
+ const b=e.target.closest('.copy');if(!b)return;const ok=await copyText(b.dataset.copy);
+ if(ok){b.classList.add('ok');b.textContent='コピーした';toast('コピーしました');setTimeout(()=>{b.classList.remove('ok');b.textContent='コピー'},1400)}else toast('コピーできませんでした。文を選んで、手でコピーしてください')});
+addEventListener('keydown',e=>{if(e.key==='Escape')$('#lb').classList.remove('on')});
+addEventListener('hashchange',()=>{view();focusCurrent()});
+try{if(localStorage.getItem('candidate-big')==='1'){document.body.classList.add('big');$('#big').setAttribute('aria-pressed','true')}}catch(e){}
+$('#big').addEventListener('click',()=>{const on=document.body.classList.toggle('big');$('#big').setAttribute('aria-pressed',on);try{localStorage.setItem('candidate-big',on?'1':'0')}catch(e){}});
+overview();view();
+</script>
+
+<section class="card" id="pausepanel" style="margin:18px auto;max-width:828px"><h2>休む・続きから再開する</h2><p>同じPC・同じブラウザに進み具合を保存します。共有PCでは自分の作業用ブラウザとアカウント名を確かめます。別の人の記録なら進まず管理する人へ相談します。別PCへは自動で移りません。</p><p id="pause-status" role="status"></p><button class="btn" id="pause" type="button">休む（進み具合を保存）</button> <button class="btn alt" id="resume" type="button">続きから再開する</button> <button class="linkbtn" id="memo" type="button">再開メモを保存</button><p>困ったときは「カード番号・押したもの・出た表示」をDiscordの自分の事業所で前に質問を書いたチャンネルまたはスレッドへ伝えます。画像が難しければ文字だけでも構いません。そばの職員さんへ援助を頼むことも選べます。パスワードや確認コードはメモに書きません。間違えても公開・削除・作り直しを繰り返さず、そこで止めます。</p></section>
+<script>
+const resumeStatus=()=>{document.querySelector('#pause-status').textContent=store.pause?'保存済み：'+store.pause.route+'／カード '+(store.pause.cur+1):'休むときは「休む」を押します。';};
+document.querySelector('#pause').onclick=()=>{const route=location.hash.replace(/^#\/?/,'')||(STAFF_MODE?'acct':'each');store.pause={route,cur:+(store['cur.'+route]||0)};try{localStorage.setItem((STAFF_MODE?'school-candidate-sns-staff-20261031':('school-dual-sns:'+location.pathname)),JSON.stringify(store));resumeStatus();toast('進み具合を保存しました')}catch(e){document.querySelector('#pause-status').textContent='保存できませんでした。カード番号を紙にメモしてください。'}};
+document.querySelector('#resume').onclick=()=>{if(!store.pause){toast('まだ休憩位置を保存していません');return;}store['cur.'+store.pause.route]=store.pause.cur;save();showAll=false;location.hash='#/'+store.pause.route;view();focusCurrent();};
+document.querySelector('#memo').onclick=()=>{const route=location.hash.replace(/^#\/?/,'')||(STAFF_MODE?'acct':'each');const text='確認公開候補の再開メモ\n'+route+'／カード '+(+(store['cur.'+route]||0)+1)+'\n同じPC・同じブラウザで続けます。\nこれは外部サービスの成果物保存や正式提出の完了記録ではありません。';const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type:'text/plain;charset=utf-8'}));a.download='再開メモ.txt';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);};
+resumeStatus();
+</script>
+<script src="learner-focus.js"></script></body></html>

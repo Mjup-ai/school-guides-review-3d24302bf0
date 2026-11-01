@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>指示書の最後の章（納品）の見本｜確認用</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font:18px/1.8 "Hiragino Sans","Noto Sans JP",sans-serif;color:#1b2a3a;background:#f3f6fa;-webkit-text-size-adjust:100%}
+.staff{background:#2b3440;color:#fff;padding:12px 14px;font-size:15px}
+.staff p{margin:0 0 8px}
+.staff .sw{display:flex;gap:8px;flex-wrap:wrap}
+.staff button{font:inherit;font-weight:bold;border:2px solid #fff;background:transparent;color:#fff;border-radius:999px;padding:4px 14px;cursor:pointer}
+.staff button[aria-pressed="true"]{background:#fff;color:#2b3440}
+main{max-width:680px;margin:0 auto;padding:12px 14px 48px}
+.chapter{background:#fff;border:1px solid #d9e1ea;border-radius:16px;padding:16px;margin-top:12px}
+.chapter>h2{margin:0 0 8px;font-size:26px;padding-left:10px;border-left:6px solid #1d4f91}
+.part{border-top:1px solid #e3e8ee;padding:14px 0}
+.part:first-of-type{border-top:0}
+.part h3{margin:0 0 6px;font-size:20px}
+.mark{display:inline-block;background:#1d4f91;color:#fff;border-radius:999px;padding:0 10px;margin-right:6px;font-size:16px}
+.okuru-card{border:2px dashed #9fb3c8;border-radius:12px;padding:10px 12px;margin:10px 0;background:#f6f8fb}
+.okuru-card .lab{font-weight:bold;font-size:16px;color:#4a5b6c;margin:0}
+.okuru-card pre{margin:4px 0 8px;font:18px/1.7 "Hiragino Sans","Noto Sans JP",sans-serif;white-space:pre-wrap;word-break:break-all}
+.btn{font:inherit;font-weight:bold;font-size:18px;border:0;border-radius:12px;padding:12px 16px;width:100%;cursor:pointer;background:#1d4f91;color:#fff}
+.btn:focus-visible,a.go:focus-visible{outline:4px solid #b56a00;outline-offset:2px}
+.copied{min-height:1.8em;margin:6px 0 0;color:#11683b;font-weight:bold}
+a.go{display:block;text-align:center;background:#fff;border:3px solid #1d4f91;border-radius:12px;padding:14px;color:#1d4f91;font-weight:bold;text-decoration:none;font-size:19px}
+a.go small{display:block;font-weight:normal;font-size:15px;color:#4a5b6c}
+.done{background:#11683b}
+.after{min-height:1.8em;margin:6px 0 0;color:#4a5b6c;font-size:16px}
+.memo{font-size:15px;color:#4a5b6c;background:#fff8e8;border-left:5px solid #d39b2a;padding:10px 12px;border-radius:8px;margin-top:16px}
+</style>
+</head>
+<body>
+<div class="staff" aria-label="見本の切りかえ（指示書には出さない）">
+<p>見本の切りかえ（この黒い帯は指示書には出しません）</p>
+<div class="sw"><button type="button" data-v="discord" aria-pressed="true">Discord版の指示書</button><button type="button" data-v="app" aria-pressed="false">アプリ版の指示書</button></div>
+</div>
+<main>
+<section class="chapter" aria-labelledby="ch">
+<h2 id="ch">納品</h2>
+
+<div class="part">
+<h3><span class="mark">1</span>送る文</h3>
+<div id="cards"></div>
+</div>
+
+<div class="part">
+<h3><span class="mark">2</span>納品のしかた</h3>
+<a class="go" id="go" href="discord/index.html#image" target="_blank" rel="noopener">納品のしかた（Discord版）<small>新しいタブで開きます</small></a>
+</div>
+
+<div class="part">
+<h3><span class="mark">3</span>もどったら『提出した』を押す</h3>
+<button type="button" class="btn done" id="teishutsu">提出した</button>
+<p class="after" id="after" aria-live="polite"></p>
+</div>
+</section>
+
+<p class="memo">見本です。事業所名と指示書のタイトルは見本の値です。日付は今日の日付が自動で入ります。『提出した』は、この見本では何も送りません。</p>
+</main>
+<script>
+(function(){
+  // 指示書が持つ値（見本）。本物は指示書のデータから入れる。
+  var q = new URLSearchParams(location.search);
+  var DATA = {
+    office: q.get('office') || '○○事業所',
+    title: q.get('title') || '画像制作 初級　文字を入れ替えるだけ！画像2枚を作ろう',
+    count: Math.max(1, Math.min(10, parseInt(q.get('count') || '2', 10) || 2))
+  };
+  var LINKS = {
+    discord: {href: 'discord/index.html#image', label: '納品のしかた（Discord版）'},
+    app: {href: 'app/index.html#image', label: '納品のしかた（アプリ版）'}
+  };
+  function today(){
+    var p = new Intl.DateTimeFormat('ja-JP', {timeZone: 'Asia/Tokyo', month: 'numeric', day: 'numeric'}).formatToParts(new Date());
+    var m = '', d = '';
+    p.forEach(function(x){ if (x.type === 'month') m = x.value; if (x.type === 'day') d = x.value; });
+    return m + '月' + d + '日';
+  }
+  function okuru(n){ return [DATA.office, DATA.title, today(), n + '枚目'].join('\n'); }
+  function copyText(t){
+    if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(t);
+    return new Promise(function(ok, ng){
+      var ta = document.createElement('textarea'); ta.value = t; ta.setAttribute('readonly', '');
+      ta.style.position = 'fixed'; ta.style.top = '-1000px'; document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy') ? ok() : ng(new Error('copy')); } catch (e) { ng(e); }
+      document.body.removeChild(ta);
+    });
+  }
+  var box = document.getElementById('cards');
+  for (var i = 1; i <= DATA.count; i++) {
+    (function(n){
+      var c = document.createElement('div'); c.className = 'okuru-card';
+      var lab = document.createElement('p'); lab.className = 'lab'; lab.textContent = n + '枚目の画像の送る文';
+      var pre = document.createElement('pre'); pre.textContent = okuru(n); pre.setAttribute('data-copy', okuru(n));
+      var b = document.createElement('button'); b.type = 'button'; b.className = 'btn'; b.textContent = '送る文をコピー';
+      var msg = document.createElement('p'); msg.className = 'copied'; msg.setAttribute('aria-live', 'polite');
+      b.addEventListener('click', function(){
+        copyText(pre.getAttribute('data-copy')).then(function(){ msg.textContent = 'コピーしました'; },
+          function(){ msg.textContent = 'コピーできませんでした。文を長押しして、コピーしてください。'; });
+      });
+      c.appendChild(lab); c.appendChild(pre); c.appendChild(b); c.appendChild(msg); box.appendChild(c);
+    })(i);
+  }
+  var go = document.getElementById('go');
+  function setV(v){
+    var L = LINKS[v] || LINKS.discord;
+    go.href = L.href; go.firstChild.nodeValue = L.label;
+    document.querySelectorAll('.staff button').forEach(function(b){ b.setAttribute('aria-pressed', String(b.getAttribute('data-v') === v)); });
+  }
+  document.querySelectorAll('.staff button').forEach(function(b){ b.addEventListener('click', function(){ setV(b.getAttribute('data-v')); }); });
+  setV(q.get('v') === 'app' ? 'app' : 'discord');
+  document.getElementById('teishutsu').addEventListener('click', function(){
+    document.getElementById('after').textContent = '見本です。何も送っていません。';
+  });
+})();
+</script>
+</body>
+</html>
